@@ -3,7 +3,7 @@ import nx from '@jswork/next';
 const defaults = {
   page: 'page',
   size: 'size',
-  dataPath: 'data',
+  dataPath: 'rows',
   totalPath: 'total'
 };
 
@@ -15,8 +15,9 @@ nx.createFetcher = function (inResource, inOptions) {
     params[options.page] = current;
     params[options.size] = pageSize;
     const res = await ctx[inResource + '_index'](params);
-    const data = options.dataPath ? res[options.dataPath] : res.rows;
-    const total = options.totalPath ? res[options.totalPath] : res.total;
+    const data = nx.get(res, options.dataPath);
+    const total = nx.get(res, options.totalPath);
+    
     return {
       data: data,
       total: total
