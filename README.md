@@ -15,7 +15,26 @@ yarn add @jswork/next-create-fetcher
 ```js
 import '@jswork/next-create-fetcher';
 
-//DOCS here!
+const fetcher = nx.createFetcher('user', {
+  page: 'page',
+  size: 'size',
+  dataPath: 'data',
+  totalPath: 'total',
+  context: {
+    user_index: async (params) => {
+      // mock api call
+      return {
+        data: [{ id: 1, name: 'john' }],
+        total: 1
+      };
+    }
+  }
+});
+
+(async () => {
+  const result = await fetcher({ current: 1, pageSize: 10 });
+  console.log(result);
+})();
 ```
 
 ## license
