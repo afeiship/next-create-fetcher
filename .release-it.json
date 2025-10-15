@@ -9,6 +9,7 @@
   },
   "github": {
     "release": true,
+    "releaseBody": "Release of version ${version}",
     "proxy": "http://127.0.0.1:9090"
   }
 }
