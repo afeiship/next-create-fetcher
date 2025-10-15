@@ -8,7 +8,8 @@ const defaults = {
 };
 
 nx.createFetcher = function (inResource, inOptions) {
-  const options = nx.mix(null, defaults, inOptions);
+  const cfg = nx.get(nx, 'cfg.next-create-fetcher', {});
+  const options = nx.mix(null, defaults, cfg, inOptions);
   const ctx = options.context || nx.$api;
   return async function ({ current, pageSize }) {
     const params = {};
@@ -17,7 +18,7 @@ nx.createFetcher = function (inResource, inOptions) {
     const res = await ctx[inResource](params);
     const data = nx.get(res, options.dataPath);
     const total = nx.get(res, options.totalPath);
-    
+
     return {
       data: data,
       total: total
