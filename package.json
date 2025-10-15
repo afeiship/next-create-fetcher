@@ -1,18 +1,57 @@
 {
-  "name": "weixin-notes",
+  "name": "@jswork/next-create-fetcher",
   "version": "1.0.0",
-  "description": "Weixin develop notes.",
-  "homepage": "https://github.com/afeiship/weixin-notes",
+  "description": "Create a resource fetcher.",
+  "homepage": "https://js.work",
+  "files": [
+    "dist",
+    "index.d.ts"
+  ],
   "author": {
     "name": "afei",
     "email": "1290657123@qq.com"
   },
   "scripts": {
-    "start": "node server.js"
+    "build": "gulp",
+    "test": "bun test",
+    "release": "release-it"
   },
-  "main": "index.js",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
   "license": "MIT",
   "devDependencies": {
-    "express": "^4.17.1"
+    "@babel/core": "^7.21.3",
+    "@babel/preset-env": "^7.20.2",
+    "@jswork/gulp-pkg-header": "^1.0.8",
+    "@jswork/gulp-registry": "^1.0.45",
+    "@jswork/next": "^1.2.2",
+    "@types/jest": "^29.5.12",
+    "del": "^6.0.0",
+    "gulp": "^4.0.2",
+    "gulp-babel": "^8.0.0",
+    "gulp-prettier": "^4.0.0",
+    "gulp-rename": "^2.0.0",
+    "gulp-replace": "^1.1.4",
+    "gulp-uglify": "^3.0.2",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.2",
+    "prettier": "^3.2.5",
+    "uglify-save-license": "^0.4.1"
+  },
+  "babel": {
+    "presets": [
+      [
+        "@babel/preset-env"
+      ]
+    ]
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx}": [
+      "npm run pretty"
+    ]
   }
 }
