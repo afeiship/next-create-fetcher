@@ -14,7 +14,7 @@ nx.createFetcher = function (inResource, inOptions) {
     const params = {};
     params[options.page] = current;
     params[options.size] = pageSize;
-    const res = await ctx[inResource + '_index'](params);
+    const res = await ctx[inResource](params);
     const data = nx.get(res, options.dataPath);
     const total = nx.get(res, options.totalPath);
     
