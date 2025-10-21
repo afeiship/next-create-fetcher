@@ -11,11 +11,12 @@ nx.createFetcher = function (inResource, inOptions) {
   const cfg = nx.get(nx, 'cfg.next-create-fetcher', {});
   const options = nx.mix(null, defaults, cfg, inOptions);
   const ctx = options.context || nx.$api;
-  return async function ({ current, pageSize }) {
-    const params = {};
-    params[options.page] = current;
-    params[options.size] = pageSize;
-    const res = await ctx[inResource](params);
+  return async function ({ current, pageSize, params }) {
+    const payload = {};
+    payload[options.page] = current;
+    payload[options.size] = pageSize;
+    const _payload = nx.mix(payload, params);
+    const res = await ctx[inResource](_payload);
     const data = nx.get(res, options.dataPath);
     const total = nx.get(res, options.totalPath);
 
