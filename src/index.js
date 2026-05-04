@@ -27,8 +27,8 @@ nx.createFetcher = function (inResource, inOptions) {
   };
 };
 
-if (typeof module !== 'undefined' && module.exports && typeof wx === 'undefined') {
-  module.exports = nx.createFetcher;
-}
+// if (typeof module !== 'undefined' && module.exports && typeof wx === 'undefined') {
+//   module.exports = nx.createFetcher;
+// }
 
 export default nx.createFetcher;
